@@ -35,8 +35,8 @@ echo Starting cron
 cron
 
 echo Starting fcgi backends...
-/etc/init.d/spawn-fcgi-munin-html start
-/etc/init.d/spawn-fcgi-munin-graph start
+spawn-fcgi -s /var/run/munin/fcgi-html.sock  -U www-data -u munin -g munin /usr/lib/munin/cgi/munin-cgi-html  -P /var/run/munin/fcgi-html.pid
+spawn-fcgi -s /var/run/munin/fcgi-graph.sock -U www-data -u munin -g munin /usr/lib/munin/cgi/munin-cgi-graph -P /var/run/munin/fcgi-graph.pid
 
 echo Starting nginx...
 mkdir -p /var/cache/nginx

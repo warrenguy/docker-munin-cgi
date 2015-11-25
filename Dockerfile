@@ -13,11 +13,9 @@ RUN apt-get clean
 VOLUME /var/lib/munin
 VOLUME /var/log/munin
 
-ADD ./munin.conf /etc/munin/munin.conf
-ADD ./nginx.conf /etc/nginx/sites-enabled/munin
-ADD ./start-munin.sh /munin
-ADD ./spawn-fcgi-munin-html /etc/init.d/spawn-fcgi-munin-html
-ADD ./spawn-fcgi-munin-graph /etc/init.d/spawn-fcgi-munin-graph
+ADD ./files/munin.conf /etc/munin/munin.conf
+ADD ./files/nginx.conf /etc/nginx/sites-enabled/munin
+ADD ./files/start /start
 
 EXPOSE 8080
-CMD bash /munin
+CMD bash /start
